@@ -1,0 +1,27 @@
+[
+  {
+    "question": "What Genre Would You Like to Watch?",
+    "responses": [
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Fantasy",
+      "Romance"
+    ]
+  },
+  {
+    "question": "How long?",
+    "responses": ["Short", "Medium", "Long"]
+  },
+  {
+    "question": "Film or TV?",
+    "responses": ["Film", "TV"]
+  },
+  {
+    "question": "Good or Bad?",
+    "responses": ["Good", "Bad"]
+  }
+]

@@ -13,6 +13,7 @@ function App() {
 
       <button onClick={() => setStart(true)}>Get Started</button>
       {start && <GenreList />}
+
     </div>
   );
 }
