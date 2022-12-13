@@ -1,9 +1,7 @@
 import { useState } from "react";
 import userQuestions from '../userQuestions.json'
 
-
 const QuestionSet = () => {
-
 
     const [answers, setAnswers] = useState([])
     const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -27,8 +25,6 @@ const QuestionSet = () => {
         <div>
             <h2>{question}</h2>
             <div>
-
-
                 {responses.map(response => {
                     return <button className="button" onClick={() => handleButtonClick(response)}>{response}</button>
                 })}
