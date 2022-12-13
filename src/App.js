@@ -1,18 +1,22 @@
 import { useState } from 'react';
 import './App.css';
-import GenreList from './Components/GenreList';
+import Question from './Components/Question'
+import userQuestions from './userQuestions.json'
+import getGenreList from './requests/getGenreList';
 
 function App() {
 
-  const [start, setStart] = useState(false)
 
+  const [show, setShow] = useState(true)
+  const [questionTwo, setQuestionTwo] = useState(false)
 
   return (
     <div className="App">
       <h1>Movie Night!</h1>
 
-      <button onClick={() => setStart(true)}>Get Started</button>
-      {start && <GenreList />}
+      {show && <Question question={userQuestions[0].question} responses={userQuestions[0].responses} action={getGenreList} setShow={setShow} setQuestionTwo={setQuestionTwo} />}
+      {questionTwo && <Question question={userQuestions[1].question} responses={userQuestions[1].responses} action={getGenreList} setShow={setQuestionTwo} />}
+
 
     </div>
   );
