@@ -10,18 +10,22 @@
       "Drama",
       "Fantasy",
       "Romance"
-    ]
+    ],
+    "key": "genre"
   },
   {
     "question": "How long?",
-    "responses": ["Short", "Medium", "Long"]
+    "responses": ["Short", "Medium", "Long"],
+    "key": "length"
   },
   {
     "question": "Film or TV?",
-    "responses": ["Film", "TV"]
+    "responses": ["Film", "TV"],
+    "key": "medium"
   },
   {
     "question": "Good or Bad?",
-    "responses": ["Good", "Bad"]
+    "responses": ["Good", "Bad"],
+    "key": "quality"
   }
 ]
