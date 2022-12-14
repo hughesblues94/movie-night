@@ -13,7 +13,7 @@ const MovieSuggestion = ({ results }) => {
         axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=15e383204c1b8a09dbfaaa4c01ed7e17&&with_genres=${genreId}`)
             .then((res) => setMovies(res.data.results))
             .catch((err) => console.log(err))
-    }, []);
+    }, [results.genre]);
 
 
     console.log("here are the movies ==> ", movies)
