@@ -1,6 +1,5 @@
 const getGenreId = (genre) => {
 
-    console.log("I'm running the getGEnreLIst function")
     const ACTION_ID = 28
     const ADVENTURE_ID = 12
     const ANIMATION_ID = 16
@@ -11,7 +10,6 @@ const getGenreId = (genre) => {
     const ROMANCE_ID = 10749
 
     switch (genre) {
-        default:
         case "Action": genre = ACTION_ID
             break
         case "Adventure": genre = ADVENTURE_ID
@@ -26,6 +24,7 @@ const getGenreId = (genre) => {
             break
         case "Fantasy": genre = FANTASY_ID
             break
+        default:
         case "Romance": genre = ROMANCE_ID
     }
 
