@@ -2,7 +2,7 @@ import { useState } from "react";
 import '../Styles/QuestionSet.css'
 import userQuestions from '../userQuestions.json'
 
-const QuestionSet = () => {
+const QuestionSet = ({ setDisplay }) => {
 
     const [answers, setAnswers] = useState([])
     const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -15,6 +15,8 @@ const QuestionSet = () => {
 
         if ((currentQuestion + 1) === userQuestions.length) {
             setFinish(true)
+            setDisplay(false)
+            alert("end of questions")
         } else {
             setCurrentQuestion(currentQuestion + 1)
         }
