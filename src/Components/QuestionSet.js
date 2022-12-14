@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../Styles/QuestionSet.css'
 import userQuestions from '../userQuestions.json'
 
 const QuestionSet = () => {
@@ -23,8 +24,9 @@ const QuestionSet = () => {
 
     return (
         <div>
-            <h2>{question}</h2>
-            <div>
+            <h2 className="question">{question}</h2>
+            <div className="button-container">
+
                 {responses.map(response => {
                     return <button className="button" onClick={() => handleButtonClick(response)}>{response}</button>
                 })}
