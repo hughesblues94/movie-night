@@ -1,5 +1,10 @@
 [
   {
+    "question": "Film or TV?",
+    "responses": ["Film", "TV"],
+    "key": "medium"
+  },
+  {
     "question": "What Genre Would You Like to Watch?",
     "responses": [
       "Action",
@@ -17,11 +22,6 @@
     "question": "How long?",
     "responses": ["Short", "Medium", "Long"],
     "key": "length"
-  },
-  {
-    "question": "Film or TV?",
-    "responses": ["Film", "TV"],
-    "key": "medium"
   },
   {
     "question": "Good or Bad?",
