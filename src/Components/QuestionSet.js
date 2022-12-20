@@ -25,7 +25,7 @@ const QuestionSet = ({ setDisplay }) => {
         setResults(answers);
         if ((currentQuestion + 1) === userQuestions.length) {
             setFinish(true)
-            // setDisplay(false)
+            //setDisplay(false)
 
         } else {
             setCurrentQuestion(currentQuestion + 1)
