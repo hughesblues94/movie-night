@@ -12,6 +12,9 @@ const QuestionSet = ({ setDisplay }) => {
         medium: "",
         quality: ""
     })
+
+    console.log(answers)
+
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [finish, setFinish] = useState(false)
     const [results, setResults] = useState({})

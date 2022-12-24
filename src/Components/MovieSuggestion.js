@@ -8,7 +8,6 @@ import getLength from "../requests/getLength";
 
 const MovieSuggestion = ({ results }) => {
 
-    console.log(getMedium(results.medium))
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
@@ -24,16 +23,11 @@ const MovieSuggestion = ({ results }) => {
             .catch((err) => console.log(err))
     }, [results.genre, results.length, results.medium, results.quality]);
 
-
-
-    console.log("here are the movies ==> ", movies)
-
-    
     return (
         <div>
             {movies && <MovieCard movies={movies} />}
         </div>
-    
+
     );
 }
 

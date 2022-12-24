@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 20rem;
+  border-style: solid;
+  align-items: center;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+img {
+  height: 10rem;
+  width: 10rem;
+  border-style: solid;
+  margin-bottom: 2rem;
+}
+
+.movie-title {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.desc {
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
