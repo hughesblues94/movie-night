@@ -24,11 +24,11 @@ const QuestionSet = ({ setDisplay }) => {
     const handleButtonClick = (response) => {
         if (finish)
             console.log("these are the answers: ", answers)
-
         setResults(answers);
+
         if ((currentQuestion + 1) === userQuestions.length) {
             setFinish(true)
-            //setDisplay(false)
+            // setDisplay(false)
 
         } else {
             setCurrentQuestion(currentQuestion + 1)
