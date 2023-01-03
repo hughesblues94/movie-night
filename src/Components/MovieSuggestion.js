@@ -27,7 +27,7 @@ const MovieSuggestion = ({ results, handleReset }) => {
 
     return (
         <div>
-            {movies && <MovieCard movies={movies} />}
+            {movies && <MovieCard movie={movies[0]} />}
             <button onClick={handleReset}>Reset</button>
         </div>
 
