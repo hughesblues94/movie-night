@@ -4,37 +4,15 @@ import userQuestions from '../userQuestions.json'
 import MovieSuggestion from "./MovieSuggestion";
 
 const QuestionSet = ({ setDisplay }) => {
-
-
-    const [answers, setAnswers] = useState({
-        genre: "",
-        length: "",
-        medium: "",
-        quality: ""
-    })
-
-    console.log(answers)
-
-    const [currentQuestion, setCurrentQuestion] = useState(0)
-    const [finish, setFinish] = useState(false)
     const [results, setResults] = useState({})
 
-    const { question, responses, key } = userQuestions[currentQuestion]
+    const currentQuestion = Object.keys(results).length
+    console.log(Object.keys(results))
+
+    const { question, responses, key } = userQuestions[currentQuestion] || {}
 
     const handleButtonClick = (response) => {
-        if (finish)
-            console.log("these are the answers: ", answers)
-        setResults(answers);
-
-        if ((currentQuestion + 1) === userQuestions.length) {
-            setFinish(true)
-            // setDisplay(false)
-
-        } else {
-            setCurrentQuestion(currentQuestion + 1)
-        }
-
-        setAnswers({ ...answers, [key]: response })
+        setResults({ ...results, [key]: response });
     }
 
     return (
@@ -42,13 +20,12 @@ const QuestionSet = ({ setDisplay }) => {
             <h2 className="question">{question}</h2>
             <div className="button-container">
 
-                {responses.map(response => {
-                    return <button className="button" onClick={() => handleButtonClick(response)}>{response}</button>
+                {currentQuestion !== userQuestions.length && responses.map((response) => {
+                    return <button key={response} className="button" onClick={() => handleButtonClick(response)}>{response}</button>
                 })}
 
-
             </div>
-            {finish && <MovieSuggestion results={results} />}
+            {currentQuestion === userQuestions.length && <MovieSuggestion results={results} />}
         </div>
     );
 }

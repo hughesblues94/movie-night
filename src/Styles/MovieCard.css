@@ -1,26 +1,26 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 20rem;
-  border-style: solid;
+  height: 40rem;
+  border: solid white;
   align-items: center;
   margin-left: 5rem;
   margin-right: 5rem;
 }
 
 img {
-  height: 10rem;
-  width: 10rem;
-  border-style: solid;
+  height: 100em;
+  width: 15em;
+  border: solid white;
   margin-bottom: 2rem;
 }
 
 .movie-title {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  font-size: 100px;
 }
 
 .desc {
+  font-size: 30px;
   margin-left: 10rem;
   margin-right: 10rem;
 }
