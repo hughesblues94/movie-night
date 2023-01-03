@@ -15,6 +15,10 @@ const QuestionSet = ({ setDisplay }) => {
         setResults({ ...results, [key]: response });
     }
 
+    const handleReset = () => {
+        setResults({})
+    }
+
     return (
         <div>
             <h2 className="question">{question}</h2>
@@ -25,7 +29,7 @@ const QuestionSet = ({ setDisplay }) => {
                 })}
 
             </div>
-            {currentQuestion === userQuestions.length && <MovieSuggestion results={results} />}
+            {currentQuestion === userQuestions.length && <MovieSuggestion results={results} handleReset={handleReset} />}
         </div>
     );
 }

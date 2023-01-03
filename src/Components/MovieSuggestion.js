@@ -6,8 +6,8 @@ import getQuality from "../requests/getQuality";
 import MovieCard from "./MovieCard";
 import getLength from "../requests/getLength";
 
-const MovieSuggestion = ({ results }) => {
-
+const MovieSuggestion = ({ results, handleReset }) => {
+    console.log(results)
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
@@ -18,7 +18,8 @@ const MovieSuggestion = ({ results }) => {
         axios.get(`https://api.themoviedb.org/3/discover/${medium}?api_key=15e383204c1b8a09dbfaaa4c01ed7e17&&with_genres=${genreId}&${quality}&release_date.lte=2022&language=en-US&${length}`)
             .then((res) => {
                 setMovies(res.data.results)
-                console.log("useEffect ran with the following arguments", " ", genreId, " ", medium, " ", quality, " ", length)
+                console.log("useEffect ran with the following arguments ", "GENRE_ID: " + genreId, "MEDIUM: " + medium, "QUALITY: ", quality + "LENGTH: " + length)
+
             })
 
             .catch((err) => console.log(err))
@@ -27,6 +28,7 @@ const MovieSuggestion = ({ results }) => {
     return (
         <div>
             {movies && <MovieCard movies={movies} />}
+            <button onClick={handleReset}>Reset</button>
         </div>
 
     );
