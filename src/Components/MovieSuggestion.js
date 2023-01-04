@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import getGenreId from "../requests/getGenreId";
-import getMedium from "../requests/getMedium";
-import getQuality from "../requests/getQuality";
+import getGenreId from "../helpers/getGenreId";
+import getMedium from "../helpers/getMedium";
+import getQuality from "../helpers/getQuality";
 import MovieCard from "./MovieCard";
-import getLength from "../requests/getLength";
+import getLength from "../helpers/getLength";
+import '../Styles/MovieSuggestion.css'
 
 const MovieSuggestion = ({ results, handleReset }) => {
     console.log(results)
@@ -28,7 +29,7 @@ const MovieSuggestion = ({ results, handleReset }) => {
     return (
         <div>
             {movies && <MovieCard movie={movies[0]} />}
-            <button onClick={handleReset}>Reset</button>
+            <button className="reset-button" onClick={handleReset}>Reset</button>
         </div>
 
     );
