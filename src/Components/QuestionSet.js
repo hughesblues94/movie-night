@@ -3,7 +3,7 @@ import '../Styles/QuestionSet.css'
 import userQuestions from '../userQuestions.json'
 import MovieSuggestion from "./MovieSuggestion";
 
-const QuestionSet = ({ setDisplay }) => {
+const QuestionSet = () => {
     const [results, setResults] = useState({})
 
     const currentQuestion = Object.keys(results).length
