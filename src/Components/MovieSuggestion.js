@@ -5,7 +5,6 @@ import getMedium from "../helpers/getMedium";
 import getQuality from "../helpers/getQuality";
 import MovieCard from "./MovieCard";
 import getLength from "../helpers/getLength";
-import '../Styles/MovieSuggestion.css'
 
 const MovieSuggestion = ({ results, handleReset }) => {
     console.log(results)
@@ -28,8 +27,7 @@ const MovieSuggestion = ({ results, handleReset }) => {
 
     return (
         <div>
-            {movies && <MovieCard movie={movies[0]} />}
-            <button className="reset-button" onClick={handleReset}>Reset</button>
+            {movies && <MovieCard movie={movies[0]} handleReset={handleReset} />}
         </div>
 
     );
