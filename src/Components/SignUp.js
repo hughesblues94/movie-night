@@ -1,7 +1,34 @@
-const SignUp = () => {
+import { Form, redirect } from "react-router-dom";
+
+export default function SignUp() {
     return (
-        <h1>This is the sign up page</h1>
+        <div>
+            <Form method="post" action="" >
+                <label>
+                    <span>Your Name:</span>
+                    <input type="name" name="name" required></input>
+                </label>
+                <label>
+                    <span>Your e-mail:</span>
+                    <input type="name" name="email" required></input>
+                </label>
+                <button>Submit</button>
+            </Form>
+        </div>
     );
 }
 
-export default SignUp;
+export const userSignUp = async ({ request }) => {
+    const data = await request.formData()
+
+    const submission = {
+        username: data.get('name'),
+        email: data.get('email')
+    }
+    console.log(submission)
+
+    // send post request
+
+    //redirect user 
+    return redirect('/')
+}
