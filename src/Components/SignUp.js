@@ -1,17 +1,15 @@
 import { Form, redirect } from "react-router-dom";
-import { useState } from "react";
 import '../Styles/SignUp.css'
 
 export default function SignUp() {
 
-    const [errors, setErrors] = useState("")
-
     return (
         <div className="form">
+            <h1>Sign Up</h1>
             <Form method="post" action="" >
                 <label>
                     <span>Your Name:</span>
-                    <input type="name" name="name" required></input>
+                    <input type="name" name="name" required placeholder="e.g. Marlon Brando"></input>
                 </label>
                 <label>
                     <span>Your e-mail:</span>
@@ -19,12 +17,18 @@ export default function SignUp() {
                 </label>
                 <label>
                     <span>Password (minimum 6 characters, must contain a letter and a number)</span>
-                    <input type="password" name="password" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
+                    <input
+                        type="password"
+                        name="password"
+                        required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
                     ></input>
                 </label>
                 <label>
                     <span>Confirm Password:</span>
-                    <input type="password" name="confirmPassword" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
+                    <input
+                        type="password"
+                        name="confirmPassword"
+                        required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
                     ></input>
                 </label>
                 <button>Submit</button>
@@ -32,8 +36,8 @@ export default function SignUp() {
         </div>
     );
 }
-
 export const userSignUp = async ({ request }) => {
+
     const data = await request.formData()
 
     const submission = {
@@ -47,7 +51,6 @@ export const userSignUp = async ({ request }) => {
     if (submission.password !== submission.confirmPassword) {
         console.log("Passwords did not match, please try again")
     }
-
 
     // send post request
 
