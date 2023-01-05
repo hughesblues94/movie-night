@@ -10,6 +10,10 @@ const MovieSuggestion = ({ results, handleReset }) => {
     console.log(results)
     const [movies, setMovies] = useState([])
 
+    const random = Math.floor(Math.random() * (20 - 0 + 1)) + 0
+    console.log(random)
+
+
     useEffect(() => {
         const genreId = getGenreId(results.genre)
         const quality = getQuality(results.quality)
@@ -19,7 +23,6 @@ const MovieSuggestion = ({ results, handleReset }) => {
             .then((res) => {
                 setMovies(res.data.results)
                 console.log("useEffect ran with the following arguments ", "GENRE_ID: " + genreId, "MEDIUM: " + medium, "QUALITY: ", quality + "LENGTH: " + length)
-
             })
 
             .catch((err) => console.log(err))
@@ -27,7 +30,7 @@ const MovieSuggestion = ({ results, handleReset }) => {
 
     return (
         <div>
-            {movies && <MovieCard movie={movies[0]} handleReset={handleReset} />}
+            {movies && <MovieCard movie={movies[random]} handleReset={handleReset} />}
         </div>
 
     );

@@ -3,10 +3,11 @@ import '../Styles/SignUp.css'
 
 export default function SignUp() {
 
+
     return (
-        <div className="form">
+        <div>
             <h1>Sign Up</h1>
-            <Form method="post" action="" >
+            <Form className="form" method="post" action="" >
                 <label>
                     <span>Your Name:</span>
                     <input type="name" name="name" required placeholder="e.g. Marlon Brando"></input>

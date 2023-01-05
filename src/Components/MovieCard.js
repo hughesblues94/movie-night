@@ -9,8 +9,6 @@ const MovieCard = ({ movie, handleReset }) => {
             <img alt="movie poster" src={`https://image.tmdb.org/t/p/w185${movie?.poster_path}`} />
             <p className='desc'> {movie?.overview} </p>
             <button className="reset-button" onClick={handleReset}>Reset</button>
-
-
         </div>
     );
 }
