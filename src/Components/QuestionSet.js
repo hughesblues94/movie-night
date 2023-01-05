@@ -21,6 +21,7 @@ const QuestionSet = () => {
 
     return (
         <div>
+            <h1 className='title'>Movie Night!</h1>
             <h2 className="question">{question}</h2>
             <div className="button-container">
 
