@@ -3,7 +3,6 @@ import {
   Route,
   createRoutesFromElements,
   RouterProvider,
-
 } from 'react-router-dom'
 
 import './App.css';
