@@ -1,5 +1,6 @@
 import { Form, redirect } from "react-router-dom";
-import '../Styles/SignUp.css'
+import '../Styles/SignUp.css';
+import axios from 'axios';
 
 export default function SignUp() {
 
@@ -54,6 +55,14 @@ export const userSignUp = async ({ request }) => {
     }
 
     // send post request
+    axios.post("localhost:3000/users", submission)
+        .then((response) => {
+            if (response.status === "404") {
+                console.log("an error occured try again")
+            } else {
+                console.log("You have made an account!")
+            }
+        })
 
     //redirect user 
     return redirect('/')
