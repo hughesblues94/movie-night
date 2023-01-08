@@ -19,7 +19,7 @@ const MovieSuggestion = ({ results, handleReset }) => {
         const quality = getQuality(results.quality)
         const medium = getMedium(results.medium)
         const length = getLength(results.length)
-        axios.get(`https://api.themoviedb.org/3/discover/${medium}?api_key=15e383204c1b8a09dbfaaa4c01ed7e17&&with_genres=${genreId}&${quality}&release_date.lte=2022&language=en-US&${length}&&with_watch_providers=8`)
+        axios.get(`https://api.themoviedb.org/3/discover/${medium}?api_key=15e383204c1b8a09dbfaaa4c01ed7e17&&with_genres=${genreId}&${quality}&release_date.lte=2022&language=en-US&${length}`)
             .then((res) => {
                 setMovies(res.data.results)
                 console.log(res.data.results)
