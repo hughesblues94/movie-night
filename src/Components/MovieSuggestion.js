@@ -4,6 +4,7 @@ import getGenreId from "../helpers/getGenreId";
 import getMedium from "../helpers/getMedium";
 import getQuality from "../helpers/getQuality";
 import MovieCard from "./MovieCard";
+import Providers from "./Providers";
 import getLength from "../helpers/getLength";
 
 const MovieSuggestion = ({ results, handleReset }) => {
@@ -13,16 +14,15 @@ const MovieSuggestion = ({ results, handleReset }) => {
     const random = Math.floor(Math.random() * (20 - 0 + 1)) + 0
     console.log(random)
 
-
     useEffect(() => {
         const genreId = getGenreId(results.genre)
         const quality = getQuality(results.quality)
         const medium = getMedium(results.medium)
         const length = getLength(results.length)
-        axios.get(`https://api.themoviedb.org/3/discover/${medium}?api_key=15e383204c1b8a09dbfaaa4c01ed7e17&&with_genres=${genreId}&${quality}&release_date.lte=2022&language=en-US&${length}`)
+        axios.get(`https://api.themoviedb.org/3/discover/${medium}?api_key=15e383204c1b8a09dbfaaa4c01ed7e17&&with_genres=${genreId}&${quality}&release_date.lte=2022&language=en-US&${length}&&with_watch_providers=8`)
             .then((res) => {
                 setMovies(res.data.results)
-                console.log("useEffect ran with the following arguments ", "GENRE_ID: " + genreId, "MEDIUM: " + medium, "QUALITY: ", quality + "LENGTH: " + length)
+                console.log(res.data.results)
             })
 
             .catch((err) => console.log(err))
@@ -31,6 +31,7 @@ const MovieSuggestion = ({ results, handleReset }) => {
     return (
         <div>
             {movies && <MovieCard movie={movies[random]} handleReset={handleReset} />}
+            {movies && <Providers movie={movies[random]} />}
         </div>
 
     );
