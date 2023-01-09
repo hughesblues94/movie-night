@@ -28,12 +28,34 @@ const Providers = ({ movie }) => {
 
     return (
         <div className="providers">
+
             <h1>Where to buy:</h1>
-            {whereToBuy && whereToBuy.map((prov) => <p>{prov.provider_name}</p>)}
-            <h1>Where to rent:</h1>
-            {whereToRent && whereToRent.map((prov) => <p>{prov.provider_name}</p>)}
+
+            {whereToBuy && whereToBuy.map((prov) => {
+                return <div className="image-container">
+                    <p>{prov.provider_name}</p>
+                    <img className="logo" alt={prov.provider_name} src={`https://image.tmdb.org/t/p/w300/${prov.logo_path}`} />
+                </div>
+            })}
+
             <h1>Where to stream:</h1>
-            {whereToStream && whereToStream.map((prov) => <p>{prov.provider_name}</p>)}
+
+            {whereToStream && whereToStream.map((prov) => {
+                return <div className="image-container">
+                    <p>{prov.provider_name}</p>
+                    <img className="logo" alt={prov.provider_name} src={`https://image.tmdb.org/t/p/w300/${prov.logo_path}`} />
+                </div>
+            })}
+
+            <h1>Where to rent:</h1>
+
+            {whereToRent && whereToRent.map((prov) => {
+                return <div className="image-container">
+                    <p>{prov.provider_name}</p>
+                    <img className="logo" alt={prov.provider_name} src={`https://image.tmdb.org/t/p/w300/${prov.logo_path}`} />
+                </div>
+            })}
+
         </div>
 
 
