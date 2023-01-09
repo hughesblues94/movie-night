@@ -32,7 +32,7 @@ export default function SignUp() {
                         required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
                     ></input>
                 </label>
-                <button>Submit</button>
+                <button className="submit-button">Submit</button>
             </Form>
         </div>
     );
