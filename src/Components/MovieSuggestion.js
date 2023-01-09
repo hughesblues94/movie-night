@@ -30,10 +30,14 @@ const MovieSuggestion = ({ results, handleReset }) => {
 
     return (
         <div>
-            {movies && <MovieCard movie={movies[random]} handleReset={handleReset} />}
-            {movies && <Providers movie={movies[random]} />}
-        </div>
+            <div>
+                {movies && <MovieCard movie={movies[random]} handleReset={handleReset} />}
+            </div>
+            <div>
+                {movies && <Providers movie={movies[random]} />}
 
+            </div>
+        </div>
     );
 }
 

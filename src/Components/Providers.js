@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import '../Styles/Providers.css'
 
 const Providers = ({ movie }) => {
 
     const [whereToBuy, setWhereToBuy] = useState([])
+    const [whereToRent, setWhereToRent] = useState([])
+    const [whereToStream, setWhereToStream] = useState([])
 
     useEffect(() => {
 
@@ -11,7 +14,11 @@ const Providers = ({ movie }) => {
             .then((res) => {
                 console.log(res.data.results.GB)
                 const toBuy = res.data.results.GB.buy
+                const toRent = res.data.results.GB.rent
+                const toStream = res.data.results.GB.flatrate
                 setWhereToBuy(toBuy)
+                setWhereToRent(toRent)
+                setWhereToStream(toStream)
             })
 
             .catch((err) => console.log(err))
@@ -20,9 +27,13 @@ const Providers = ({ movie }) => {
 
 
     return (
-        <div>
-            <h1>These are the providers</h1>
-            {whereToBuy && whereToBuy.map((prov) => <h1>{prov.provider_name}</h1>)}
+        <div className="providers">
+            <h1>Where to buy:</h1>
+            {whereToBuy && whereToBuy.map((prov) => <p>{prov.provider_name}</p>)}
+            <h1>Where to rent:</h1>
+            {whereToRent && whereToRent.map((prov) => <p>{prov.provider_name}</p>)}
+            <h1>Where to stream:</h1>
+            {whereToStream && whereToStream.map((prov) => <p>{prov.provider_name}</p>)}
         </div>
 
 
