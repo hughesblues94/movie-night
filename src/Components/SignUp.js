@@ -4,7 +4,6 @@ import axios from 'axios';
 
 export default function SignUp() {
 
-
     return (
         <div>
             <h1>Sign Up</h1>
@@ -43,26 +42,32 @@ export const userSignUp = async ({ request }) => {
     const data = await request.formData()
 
     const submission = {
+        
         username: data.get('name'),
         email: data.get('email'),
         password: data.get('password'),
         confirmPassword: data.get('confirmPassword')
+        
     }
     console.log(submission)
 
     if (submission.password !== submission.confirmPassword) {
         console.log("Passwords did not match, please try again")
-    }
+    } else { 
+
+        const { username, email, password } = submission
+        const viableData = {email, username, password}
+        console.log(`this is viable data ===> ${viableData}`)
 
     // send post request
-    axios.post("localhost:3000/users", submission)
+    axios.post("localhost:3300/users", {username, email, password})
         .then((response) => {
             if (response.status === "404") {
                 console.log("an error occured try again")
             } else {
                 console.log("You have made an account!")
             }
-        })
+        }) }
 
     //redirect user 
     return redirect('/')
