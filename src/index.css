@@ -2,20 +2,14 @@
 
 * {
   font-family: "Passion One", cursive;
+  color: white;
+  text-align: center;
 }
 
-body {
-  height: 100vh;
-  align-items: center;
-  color: white;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 72, 121, 0.8333185369318181) 35%,
-    rgba(2, 153, 216, 1) 79%,
-    rgba(2, 159, 220, 1) 83%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  text-align: center;
+html {
+  background: url("./Styles/imgs/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }

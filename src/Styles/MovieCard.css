@@ -1,27 +1,11 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  height: 40rem;
-  align-items: center;
-  margin-left: 5rem;
-  margin-right: 5rem;
-}
-
-img {
-  height: 100em;
-  width: 15em;
-  border: solid white;
-  margin-bottom: 2rem;
-}
-
-.movie-title {
-  font-size: 100px;
-}
-
-.desc {
-  font-size: 30px;
-  margin-left: 10rem;
-  margin-right: 10rem;
+  border: solid 5px white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 60px 30px #fff, /* inner white */ 0 0 100px 60px #f0f,
+    /* middle magenta */ 0 0 140px 90px #0ff; /* outer cyan */
 }
 
 .reset-button {
@@ -32,7 +16,7 @@ img {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-size: 50px;
+  font-size: 20px;
   height: 60px;
   text-align: center;
   transition: all 0.3s cubic-bezier(0.05, 0.03, 0.35, 1);
@@ -40,6 +24,6 @@ img {
 }
 
 .reset-button:hover {
-  opacity: 0.7;
-  border-radius: 0;
+  /* opacity: 0.7; */
+  background-image: linear-gradient(#ffe500 0, #ffe600 100%);
 }
