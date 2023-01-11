@@ -1,6 +1,9 @@
 import { Form, redirect } from "react-router-dom";
 import '../Styles/SignUp.css';
 import axios from 'axios';
+// const bcrypt = require("bcryptjs")
+// const saltRounds = 10;
+
 
 export default function SignUp() {
 
@@ -49,21 +52,31 @@ export const userSignUp = async ({ request }) => {
         confirmPassword: data.get('confirmPassword')
         
     }
-    console.log(submission)
+    
 
     if (submission.password !== submission.confirmPassword) {
         console.log("Passwords did not match, please try again")
     } else { 
 
+        const headers = {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        };
+       
         const { username, email, password } = submission
         const viableData = {email, username, password}
-        console.log(`this is viable data ===> ${viableData}`)
+        console.log(viableData)
 
-    // send post request
-    axios.post("localhost:3300/users", {username, email, password})
-        .then((response) => {
-            if (response.status === "404") {
+    // bcrypt.hash(viableData.password, saltRounds, function(err, hash) {
+    //     return viableData.password = hash;
+    // })
+    console.log(viableData)
+    axios.post("http://localhost:3300/users", viableData, {headers})
+        .then((response) => {   
+            if (response.status === "500") {
                 console.log("an error occured try again")
+                console.log(response.body)
+                console.log(response.status)
             } else {
                 console.log("You have made an account!")
             }
