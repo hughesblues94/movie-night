@@ -1,87 +1,121 @@
-import { Form, redirect } from "react-router-dom";
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import '../Styles/SignUp.css';
-import axios from 'axios';
-// const bcrypt = require("bcryptjs")
-// const saltRounds = 10;
 
+const SignUp = () => {
+  const initialState = {
+    fields: {
+    username: "",    
+    email: "",  
+    password: "",
+    confirmPassword: "",
+    },
+  };
+  const [fields, setFields] = useState(initialState.fields);
+  const [error, setError] = useState();
 
-export default function SignUp() {
+  const navigate = useNavigate();
 
-    return (
-        <div>
-            <h1>Sign Up</h1>
-            <Form className="form" method="post" action="" >
-                <label>
-                    <span>Your Name:</span>
-                    <input type="name" name="name" required placeholder="e.g. Marlon Brando"></input>
-                </label>
-                <label>
-                    <span>Your e-mail:</span>
-                    <input type="email" name="email" required></input>
-                </label>
-                <label>
-                    <span>Password (minimum 6 characters, must contain a letter and a number)</span>
-                    <input
-                        type="password"
-                        name="password"
-                        required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
-                    ></input>
-                </label>
-                <label>
-                    <span>Confirm Password:</span>
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
-                    ></input>
-                </label>
-                <button className="submit-button">Submit</button>
-            </Form>
-        </div>
-    );
-}
-export const userSignUp = async ({ request }) => {
-
-    const data = await request.formData()
-
-    const submission = {
-        
-        username: data.get('name'),
-        email: data.get('email'),
-        password: data.get('password'),
-        confirmPassword: data.get('confirmPassword')
-        
+  const registration = async (event) => {
+    event.preventDefault();
+    if (fields.password === fields.confirmPassword) {
+      try {
+        axios.get("http://localhost:3300/email", {email: fields.email}).then((res) => {
+        console.log('in the result')
+        console.log(res)
+        if (res === 0) {
+            setError("This email has already been used! please head over to sign in")
+        } else {
+        axios
+          .post(`http://localhost:3300/users`, {
+            username: fields.username, email: fields.email, password: fields.password })
+          .then((response) => {
+            console.log(response.data[0])
+            const { userID } = response.data[0];
+            localStorage.setItem("userID", JSON.stringify(userID));
+            const localStoredUserID = localStorage.getItem("userID");
+            console.log("the local storage has this userID" + localStoredUserID);
+            navigate("/")           
+          })
+            .catch((e) => {
+            console.log(e);
+            event.preventDefault();
+          });
+      }
+    })
+    } catch (e) {
+        setError(e.message);
+      }
+    } else {
+      setError("Those passwords did not match, please try again");
     }
-    
+  };
 
-    if (submission.password !== submission.confirmPassword) {
-        console.log("Passwords did not match, please try again")
-    } else { 
+  const handleFieldChange = (event) => {
+    event.preventDefault();
+    setFields({ ...fields, [event.target.name]: event.target.value });
+    console.log(fields);
+  };
 
-        const headers = {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-        };
-       
-        const { username, email, password } = submission
-        const viableData = {email, username, password}
-        console.log(viableData)
+  return (
+    <div className="form">
+      <h1>Sign Up</h1>
+      <div>
+        <form onSubmit={registration} className="form">
+          <label htmlFor="name">Your Username</label>
+          <input
+            name="username"
+            required
+            type="text"
+            placeholder="e.g. Marlon Brando"
+            value={fields.username}
+            onChange={handleFieldChange}
+          />
 
-    // bcrypt.hash(viableData.password, saltRounds, function(err, hash) {
-    //     return viableData.password = hash;
-    // })
-    console.log(viableData)
-    axios.post("http://localhost:3300/users", viableData, {headers})
-        .then((response) => {   
-            if (response.status === "500") {
-                console.log("an error occured try again")
-                console.log(response.body)
-                console.log(response.status)
-            } else {
-                console.log("You have made an account!")
-            }
-        }) }
+          <label htmlFor="email">Your Email</label>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="e.g example@email.com"
+            value={fields.email}
+            onChange={handleFieldChange}
+          />
 
-    //redirect user 
-    return redirect('/')
-}
+          <label htmlFor="password">
+            Password (minimum 6 characters, must contain a letter and a number)
+          </label>
+          <input
+            type="password"
+            name="password"
+            data-testid="password"
+            required
+            placeholder="*******"
+            minLength="6"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
+            value={fields.password}
+            onChange={handleFieldChange}
+          />
+
+          <label htmlFor="confirmPassword">Confirm Password </label>
+          <input
+            type="password"
+            name="confirmPassword"
+            required
+            placeholder="*******"
+            value={fields.confirmPassword}
+            onChange={handleFieldChange}
+          />
+          {!!error && <p>{error}</p>}
+
+          <button type="submit" className="submit-button">
+            Submit
+          </button>
+        </form>
+      </div>
+      </div>
+  );
+};
+
+export default SignUp;
